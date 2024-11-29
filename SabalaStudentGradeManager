@@ -1,0 +1,70 @@
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class SabalaStudentGradeManager {
+    public static void main(String[] args) {
+        HashMap<String, Double> studentGrades = new HashMap<>();
+        Scanner scanner = new Scanner(System.in);
+        String option;
+
+        System.out.println("=== Student Grade Management System ===");
+
+        do {
+            System.out.println("\nOptions:");
+            System.out.println("1. Add/Update Student Grade");
+            System.out.println("2. View Student Grade");
+            System.out.println("3. Display All Grades");
+            System.out.println("4. Delete Student Record");
+            System.out.println("5. Exit");
+            System.out.print("Choose an option: ");
+            option = scanner.nextLine();
+
+            switch (option) {
+                case "1":
+                    System.out.print("Enter student name: ");
+                    String name = scanner.nextLine();
+                    System.out.print("Enter student grade: ");
+                    double grade = Double.parseDouble(scanner.nextLine());
+                    studentGrades.put(name, grade);
+                    System.out.println("Record added/updated successfully.");
+                    break;
+
+                case "2":
+                    System.out.print("Enter student name to search: ");
+                    name = scanner.nextLine();
+                    if (studentGrades.containsKey(name)) {
+                        System.out.println("Grade of " + name + ": " + studentGrades.get(name));
+                    } else {
+                        System.out.println("Student not found.");
+                    }
+                    break;
+
+                case "3":
+                    System.out.println("All Student Grades:");
+                    studentGrades.forEach((student, studentGrade) ->
+                        System.out.println(student + ": " + studentGrade)
+                    );
+                    break;
+
+                case "4":
+                    System.out.print("Enter student name to delete: ");
+                    name = scanner.nextLine();
+                    if (studentGrades.remove(name) != null) {
+                        System.out.println("Record deleted successfully.");
+                    } else {
+                        System.out.println("Student not found.");
+                    }
+                    break;
+
+                case "5":
+                    System.out.println("Exiting...");
+                    break;
+
+                default:
+                    System.out.println("Invalid option. Try again.");
+            }
+        } while (!option.equals("5"));
+
+        scanner.close();
+    }
+}
