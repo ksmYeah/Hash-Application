@@ -15,6 +15,3 @@ This application was created as part of a laboratory activity to demonstrate the
 ## Benefits
 - **To Me:** It helped me understand and implement hash structures in Java.
 - **To the Community:** It offers a simple solution for managing grades, which can be expanded into larger projects.
-
-## Sample Screenshot
-![Console Application Screenshot](screenshot.png)
